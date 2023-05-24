@@ -4,6 +4,8 @@
 
 The x64 version of Windows Terminal is included. If you want another architecture type, read below to create a custom version.
 
+The `.portable` file has been included alongside `WindowsTerminal.exe` which is described [here](https://learn.microsoft.com/en-us/windows/terminal/distributions#windows-terminal-portable).
+
 # Download
 
 Download the latest version in releases. The Terminal Portable release version will always match the Windows Terminal release version.
