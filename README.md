@@ -54,10 +54,10 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 - Click `Advanced SFX Options` at the bottom
 - After you click OK, then OK again, WinRAR will update the EXE
 - The icon will not be kept, but there are two ways to fix this:
-  - Quickest method, but may not always show icon correctly:
+  - Quickest method:
     - In the `Text and icon` tab, specify `Load SFX icon`
     - Use `icon.ico` provided after extracting the EXE
-  - Method to ensure the icon shows at all sizes:
+  - Alternate method:
     - Open the EXE in [Resource Hacker](http://angusj.com/resourcehacker/)
     - Double-click the `Icon` folder, then right-click the `Icon` folder and click `Replace Icon`
     - Use `icon.ico` provided after extracting the EXE
