@@ -32,10 +32,11 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 **Common reasons to modify:**
 - To adjust the default configuration located in `defaults.json`
 - To include extra files/scripts
+- To create your own portable using a different version
 
 **Prerequisites:**
 - You must have [WinRAR](https://www.rarlab.com/) installed (other archive utilities won't work because it's a WinRAR self-extracting archive)
-- Optional: Enable file name extensions in Windows
+- Enable file name extensions in Windows
 
 **Modifying files/folders:**
 - Right-click `wtp.exe` and click `Extract to "wtp\"`
