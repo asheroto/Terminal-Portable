@@ -39,7 +39,7 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 - Enable file name extensions in Windows
 
 **Modifying files/folders:**
-- Right-click `wtp.exe` and click `Extract to "wtp\"`
+- Right-click `wtp.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
 - Change the files in `wtp\Terminal`
 - When finished, right-click `wtp.exe` and click `Open with WinRAR`
 - Click the `Terminal` folder in WinRAR and press Delete and then Yes
