@@ -23,9 +23,9 @@ An updated version of Windows Terminal Portable should be available in the relea
 
 # How it Works
 
-This is simply a self-extracting archive of the the "Terminal" folder contained in the `msixbundle` file [released here](https://github.com/microsoft/terminal/releases).
+This is simply a self-extracting archive of the the "Terminal" folder contained in the `zip` file [released here](https://github.com/microsoft/terminal/releases).
 
-It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portable\Terminal\wt.exe`. Each time you run it, the folder will be deleted and recreated.
+It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portable\Terminal\wt.exe`. Each time you run it, the temp folder will be deleted and recreated.
 
 # How to Modify
 
