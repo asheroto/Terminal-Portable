@@ -100,11 +100,11 @@ Function Update-SFXArchive($sfxPath, $terminalPath) {
 try {
     $resolvedWtpFolderPath = Resolve-Path -Path $WtpFolderPath -ErrorAction Stop
     if (!(Test-Path -Path $resolvedWtpFolderPath -PathType Container)) {
-        Write-Output "The specified folder path for wtp.exe and wtp_user.exe does not exist or is not a directory."
+        Write-Output "The specified folder path for wtp_admin.exe and wtp_user.exe does not exist or is not a directory."
         exit
     }
 } catch {
-    Write-Output "The specified folder path for wtp.exe and wtp_user.exe does not exist."
+    Write-Output "The specified folder path for wtp_admin.exe and wtp_user.exe does not exist."
     exit
 }
 
@@ -135,13 +135,13 @@ if (-not $zipFile) {
     Write-Debug "zipFile: $($zipFile.FullName)"
 }
 
-# Paths to wtp.exe and wtp_user.exe
-$wtpExePath = [System.IO.Path]::Combine($resolvedWtpFolderPath.Path, "wtp.exe")
+# Paths to wtp_admin.exe and wtp_user.exe
+$wtpExePath = [System.IO.Path]::Combine($resolvedWtpFolderPath.Path, "wtp_admin.exe")
 $wtpUserExePath = [System.IO.Path]::Combine($resolvedWtpFolderPath.Path, "wtp_user.exe")
 
 # Check if paths exist
 if (!(Test-Path $wtpExePath)) {
-    Write-Warning "The path to wtp.exe does not exist: $wtpExePath"
+    Write-Warning "The path to wtp_admin.exe does not exist: $wtpExePath"
     exit
 }
 
@@ -183,7 +183,7 @@ $terminalPath = [System.IO.Path]::Combine($extractedPath.FullName, "Terminal")
 # Create .portable file in the Terminal folder
 Create-PortableFile $terminalPath
 
-# Update the wtp.exe and wtp_user.exe SFX archives
+# Update the wtp_admin.exe and wtp_user.exe SFX archives
 Update-SFXArchive $wtpExePath $terminalPath
 Update-SFXArchive $wtpUserExePath $terminalPath
 
