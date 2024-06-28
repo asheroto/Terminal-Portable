@@ -10,11 +10,11 @@ The `.portable` file has been included alongside `WindowsTerminal.exe` which is 
 
 Download the latest version in releases. The Terminal Portable release version will always match the Windows Terminal release version.
 
-You only need `wtp.exe` but can use either or both. Rename if desired.
+You only need `wtp_admin.exe` but can use either or both. Rename if desired.
 
 |Filename|Description|
 |--|--|
-|`wtp.exe`|Terminal launches using "Run as Administrator" by default|
+|`wtp_admin.exe`|Terminal launches using "Run as Administrator" by default|
 |`wtp_user.exe`|Terminal runs as the current user by default|
 
 # Updates / Releases
@@ -39,9 +39,9 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 - Enable file name extensions in Windows
 
 **Modifying files/folders:**
-- Right-click `wtp.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
+- Right-click `wtp_admin.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
 - Change the files in `wtp\Terminal`
-- When finished, right-click `wtp.exe` and click `Open with WinRAR`
+- When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
 - Click the `Terminal` folder in WinRAR and press Delete and then Yes
 - Drag the `Terminal` folder you extracted into WinRAR
 - **Notes:**
@@ -49,7 +49,7 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
   - Anything you add to the root of the archive will extract to `%temp%\Terminal-Portable` (and then be deleted on next run)
 
 **Modifying the self-extracting archive itself:**
-- When finished, right-click `wtp.exe` and click `Open with WinRAR`
+- When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
 - Click the `SFX` button at the top right of WinRAR
 - Click `Advanced SFX Options` at the bottom
 - After you click OK, then OK again, WinRAR will update the EXE
