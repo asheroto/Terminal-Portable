@@ -151,7 +151,7 @@ if (!(Test-Path $wtpUserExePath)) {
 }
 
 # Create extraction directory if it doesn't exist
-$extractedPath = ".\Extracted"
+$extractedPath = [System.IO.Path]::Combine($resolvedWtpFolderPath.Path, "Extracted-Terminal-Portable")
 if (-not (Test-Path -Path $extractedPath)) {
     $extractedPath = New-Item -Path $extractedPath -ItemType Directory -Force
 } else {

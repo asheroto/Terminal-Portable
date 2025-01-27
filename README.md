@@ -12,10 +12,10 @@ Download the latest version in releases. The Terminal Portable release version w
 
 You only need `wtp_admin.exe` but can use either or both. Rename if desired.
 
-|Filename|Description|
-|--|--|
-|`wtp_admin.exe`|Terminal launches using "Run as Administrator" by default|
-|`wtp_user.exe`|Terminal runs as the current user by default|
+| Filename        | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| `wtp_admin.exe` | Terminal launches using "Run as Administrator" by default |
+| `wtp_user.exe`  | Terminal runs as the current user by default              |
 
 # Updates / Releases
 
@@ -39,21 +39,21 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 - Enable file name extensions in Windows
 
 **Modifying files/folders:**
-- Right-click `wtp_admin.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
-- Change the files in `wtp\Terminal`
-- When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
-- Click the `Terminal` folder in WinRAR and press Delete and then Yes
-- Drag the `Terminal` folder you extracted into WinRAR
+1. Right-click `wtp_admin.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
+2. Change the files in `wtp\Terminal`
+3. When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
+4. Click the `Terminal` folder in WinRAR and press Delete and then Yes
+5. Drag the `Terminal` folder you extracted into WinRAR
 - **Notes:**
   - If you change the name or path of `Terminal` in WinRAR, then it will not open Terminal correctly
-  - Anything you add to the root of the archive will extract to `%temp%\Terminal-Portable` (and then be deleted on next run)
+  - Anything you add to the root of the archive will extract to `%temp%\Terminal-Portable`, then overwritten on next run
 
 **Modifying the self-extracting archive itself:**
-- When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
-- Click the `SFX` button at the top right of WinRAR
-- Click `Advanced SFX Options` at the bottom
-- After you click OK, then OK again, WinRAR will update the EXE
-- The icon will not be kept, but there are two ways to fix this:
+1. When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
+2. Click the `SFX` button at the top right of WinRAR
+3. Click `Advanced SFX Options` at the bottom
+4. After you click OK, then OK again, WinRAR will update the EXE
+5. The icon will not be kept, but there are two ways to fix this:
   - Quickest method:
     - In the `Text and icon` tab, specify `Load SFX icon`
     - Use `icon.ico` provided after extracting the EXE
@@ -63,3 +63,14 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
     - Use `icon.ico` provided after extracting the EXE
     - Don't delete the `Icon` group or it may not work as expected
 - You can adjust Run as Administrator under the `Advanced` tab
+
+**Modifying settings/appearance/etc.:**
+1. Open `%TEMP%` and find the `Terminal-Portable` folder. Delete it.
+2. Grab a new SFX file from [Releases](https://github.com/asheroto/Terminal-Portable/releases).
+3. Run it. Then click the drop-down arrow and go to `Settings`:
+
+![Image](https://github.com/user-attachments/assets/56388035-3110-4bd7-8a67-5b6e0f5fdb7c)
+
+4. Change the settings you'd like to change and click `Save` when done.
+5. Go to `%TEMP%\Terminal-Portable\Terminal` and you'll now find a newly created `settings` folder and `settings.json` file.
+6. Update the SFX archive with both the folder and file from step 5.
