@@ -30,13 +30,24 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 # How to Modify
 
 **Common reasons to modify:**
-- To adjust the default configuration located in `defaults.json`
+- To adjust configuration settings (see below)
 - To include extra files/scripts
 - To create your own portable using a different version
 
 **Prerequisites:**
 - You must have [WinRAR](https://www.rarlab.com/) installed (other archive utilities won't work because it's a WinRAR self-extracting archive)
 - Enable file name extensions in Windows
+
+**Modifying settings/appearance/etc.:**
+1. Open `%TEMP%` and find the `Terminal-Portable` folder. Delete it.
+2. Grab a new SFX file from [Releases](https://github.com/asheroto/Terminal-Portable/releases).
+3. Run it. Then click the drop-down arrow and go to `Settings`:
+
+![Image](https://github.com/user-attachments/assets/56388035-3110-4bd7-8a67-5b6e0f5fdb7c)
+
+4. Change the settings you'd like to change and click `Save` when done.
+5. Go to `%TEMP%\Terminal-Portable\Terminal` and you'll now find a newly created `settings` folder and `settings.json` file.
+6. Update the SFX archive with both the folder and file from step 5.
 
 **Modifying files/folders:**
 1. Right-click `wtp_admin.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
@@ -63,14 +74,3 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
     - Use `icon.ico` provided after extracting the EXE
     - Don't delete the `Icon` group or it may not work as expected
 - You can adjust Run as Administrator under the `Advanced` tab
-
-**Modifying settings/appearance/etc.:**
-1. Open `%TEMP%` and find the `Terminal-Portable` folder. Delete it.
-2. Grab a new SFX file from [Releases](https://github.com/asheroto/Terminal-Portable/releases).
-3. Run it. Then click the drop-down arrow and go to `Settings`:
-
-![Image](https://github.com/user-attachments/assets/56388035-3110-4bd7-8a67-5b6e0f5fdb7c)
-
-4. Change the settings you'd like to change and click `Save` when done.
-5. Go to `%TEMP%\Terminal-Portable\Terminal` and you'll now find a newly created `settings` folder and `settings.json` file.
-6. Update the SFX archive with both the folder and file from step 5.
