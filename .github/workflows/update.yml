@@ -30,7 +30,7 @@ jobs:
           "tag=$upstream" >> $env:GITHUB_OUTPUT
           if ($upstream -and $upstream -ne $ours) { "build=true" >> $env:GITHUB_OUTPUT }
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.check.outputs.build == 'true'
 
       - name: Install WinRAR
