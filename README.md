@@ -19,11 +19,20 @@ You only need `wtp_admin.exe` but can use either or both. Rename if desired.
 
 # Updates / Releases
 
-An updated version of Windows Terminal Portable should be available in the releases section within a few days of a new Windows Terminal release.
+A GitHub Actions workflow checks for a new Windows Terminal release every day. When one is out, it rebuilds both EXEs and publishes a matching release here automatically, usually within a day.
+
+To build an update yourself, run `Update.ps1` from a folder that contains `wtp_admin.exe` and `wtp_user.exe` (such as a clone of this repo), or point it at another folder:
+
+```powershell
+.\Update.ps1
+.\Update.ps1 -WtpFolderPath "C:\path\to\folder"
+```
+
+The script downloads the latest x64 release, checks its SHA256 hash, and replaces the `Terminal` folder inside both EXEs. It needs WinRAR installed in `C:\Program Files\WinRAR`. Any files you added to the `Terminal` folder inside the EXEs, such as `settings.json`, are removed during the update, so add them back afterward.
 
 # How it Works
 
-This is simply a self-extracting archive of the the "Terminal" folder contained in the x64 `zip` file [released here](https://github.com/microsoft/terminal/releases).
+This is simply a self-extracting archive of the "Terminal" folder contained in the x64 `zip` file [released here](https://github.com/microsoft/terminal/releases).
 
 It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portable\Terminal\wt.exe`. Each time you run it, the temp folder will be deleted and recreated.
 
@@ -47,7 +56,7 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
 
 4. Change the settings you'd like to change and click `Save` when done.
 5. Go to `%TEMP%\Terminal-Portable\Terminal` and you'll now find a newly created `settings` folder and `settings.json` file.
-6. Update the SFX archive with both the folder and file from step 5.
+6. Add both the folder and the file from step 5 to the `Terminal` folder inside the EXE, following the steps in "Modifying files/folders" below.
 
 **Modifying files/folders:**
 1. Right-click `wtp_admin.exe` and click `Extract to "wtp\"` (you may need to choose the WinRAR option first)
@@ -60,17 +69,17 @@ It extracts to `%temp%\Terminal-Portable` and then runs `%temp%\Terminal-Portabl
   - Anything you add to the root of the archive will extract to `%temp%\Terminal-Portable`, then overwritten on next run
 
 **Modifying the self-extracting archive itself:**
-1. When finished, right-click `wtp_admin.exe` and click `Open with WinRAR`
+1. Right-click `wtp_admin.exe` and click `Open with WinRAR`
 2. Click the `SFX` button at the top right of WinRAR
 3. Click `Advanced SFX Options` at the bottom
 4. After you click OK, then OK again, WinRAR will update the EXE
 5. The icon will not be kept, but there are two ways to fix this:
-  - Quickest method:
-    - In the `Text and icon` tab, specify `Load SFX icon`
-    - Use `icon.ico` provided after extracting the EXE
-  - Alternate method:
-    - Open the EXE in [Resource Hacker](http://angusj.com/resourcehacker/)
-    - Double-click the `Icon` folder, then right-click the `Icon` folder and click `Replace Icon`
-    - Use `icon.ico` provided after extracting the EXE
-    - Don't delete the `Icon` group or it may not work as expected
+   - Quickest method:
+     - In the `Text and icon` tab, specify `Load SFX icon`
+     - Use `icon.ico` provided after extracting the EXE
+   - Alternate method:
+     - Open the EXE in [Resource Hacker](http://angusj.com/resourcehacker/)
+     - Double-click the `Icon` folder, then right-click the `Icon` folder and click `Replace Icon`
+     - Use `icon.ico` provided after extracting the EXE
+     - Don't delete the `Icon` group or it may not work as expected
 - You can adjust Run as Administrator under the `Advanced` tab

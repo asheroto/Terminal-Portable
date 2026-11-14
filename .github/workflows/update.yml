@@ -1,0 +1,63 @@
+name: Update
+
+# Checks daily for a new Windows Terminal release. When one is found, rebuilds
+# wtp_admin.exe and wtp_user.exe, commits them, and publishes a release.
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Compare versions
+        id: check
+        shell: pwsh
+        run: |
+          $upstream = gh release view -R microsoft/terminal --json tagName -q .tagName
+          $ours = gh release view -R $env:GITHUB_REPOSITORY --json tagName -q .tagName 2>$null
+          Write-Output "Windows Terminal: $upstream, Terminal Portable: $ours"
+          "tag=$upstream" >> $env:GITHUB_OUTPUT
+          if ($upstream -and $upstream -ne $ours) { "build=true" >> $env:GITHUB_OUTPUT }
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.build == 'true'
+
+      - name: Install WinRAR
+        if: steps.check.outputs.build == 'true'
+        shell: pwsh
+        env:
+          WINRAR_KEY: ${{ secrets.WINRAR_KEY }}
+        run: |
+          choco install winrar -y --no-progress
+          if ($env:WINRAR_KEY) { Set-Content -Path "C:\Program Files\WinRAR\rarreg.key" -Value $env:WINRAR_KEY }
+
+      - name: Build
+        if: steps.check.outputs.build == 'true'
+        shell: pwsh
+        run: ./Update.ps1
+
+      - name: Commit and release
+        if: steps.check.outputs.build == 'true'
+        shell: pwsh
+        env:
+          TAG: ${{ steps.check.outputs.tag }}
+        run: |
+          $version = $env:TAG.TrimStart('v')
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add wtp_admin.exe wtp_user.exe
+          git commit -m "Update to $version"
+          git push
+          $notes = "- Updated to [$env:TAG](https://github.com/microsoft/terminal/releases/tag/$env:TAG)"
+          gh release create $env:TAG wtp_admin.exe wtp_user.exe --title $env:TAG --notes $notes --target (git rev-parse HEAD)
